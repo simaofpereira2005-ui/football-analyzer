@@ -1,6 +1,6 @@
 # 🏆 World Cup 2026 Predictor (Data Science & Poisson Distribution)
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)]https://football-analyzer-ifpkpaveeawzuyfpa4hpyf.streamlit.app/
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://football-analyzer-ifpkpaveeawzuyfpa4hpyf.streamlit.app/)
 
 Este é um projeto *Full-Stack* de Engenharia de Dados e Machine Learning (Estatística Clássica) que prevê resultados de jogos de futebol do Mundial de 2026. A aplicação extrai dados reais em tempo real, processa-os numa base de dados SQL, e utiliza a **Distribuição de Poisson** para calcular o *Expected Goals* (xG) e as probabilidades de Vitória, Empate e Derrota.
 
