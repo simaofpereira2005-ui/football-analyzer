@@ -34,5 +34,5 @@ Se quiseres clonar e correr este laboratório no teu próprio computador, segue 
 
 **1. Clonar o Repositório**
 ```bash
-git clone [https://github.com/o-teu-nome/football-analyzer.git](https://github.com/o-teu-nome/football-analyzer.git)
+git clone https://github.com/simaofpereira2005-ui/football-analyzer.git
 cd football-analyzer
