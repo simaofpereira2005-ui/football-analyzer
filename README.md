@@ -73,10 +73,4 @@ streamlit run app.py
 
 ---
 
-## 🧠 Como funciona a Matemática (Distribuição de Poisson)?
-
-O modelo assume que os golos no futebol são eventos independentes que ocorrem a uma taxa média constante. 
-Primeiro, calculamos o xG (Expectativa de Golos) para um jogo específico cruzando o poder de ataque da Equipa A com o poder de defesa da Equipa B e a média geral do torneio. De seguida, o valor gerado (Lambda) é inserido na fórmula de Poisson para extrair a probabilidade de a equipa marcar 0, 1, 2, 3 ou mais golos. O cruzamento das probabilidades de ambas as equipas dá-nos a matriz final de Vitória, Empate e Derrota.
-
----
 *Desenvolvido por Simão Pereira - Engenharia Informática @ IPL.*
