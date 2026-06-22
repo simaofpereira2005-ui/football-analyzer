@@ -1,33 +1,41 @@
 import requests
 import os
+import time
 from dotenv import load_dotenv
-import database 
+import database
 
 load_dotenv()
 minha_chave = os.getenv("API_KEY")
+headers = {"X-Auth-Token": minha_chave}
+competicao = "WC"
 
-competicao = "PL"
-url = f"https://api.football-data.org/v4/competitions/{competicao}/matches"
+database.criar_base_dados()
 
-headers = {
-    "X-Auth-Token": minha_chave
-}
+anos_para_analisar = ["2022", "2026"]
+total_jogos_guardados = 0
 
-filtros = {
-    "status": "FINISHED",
-    "season": "2025"
-}
+print("A iniciar extração histórica...")
 
-resposta = requests.get(url, headers=headers, params=filtros)
-
-if resposta.status_code == 200:
-    dados = resposta.json()
-    jogos = dados.get('matches', [])
+for ano in anos_para_analisar:
+    url = f"https://api.football-data.org/v4/competitions/{competicao}/matches"
+    filtros = {
+        "status": "FINISHED",
+        "season": ano
+    }
     
-    print(f"Encontrados {len(jogos)} jogos na API.")
+    print(f"> A consultar o menu do Mundial {ano}...")
+    resposta = requests.get(url, headers=headers, params=filtros)
     
-    if len(jogos) > 0:
-        database.criar_base_dados() 
-        database.guardar_jogos(jogos)
-else:
-    print(f"Erro: {resposta.status_code}")
+    if resposta.status_code == 200:
+        dados = resposta.json()
+        jogos = dados.get('matches', [])
+        
+        if len(jogos) > 0:
+            database.guardar_jogos(jogos)
+            total_jogos_guardados += len(jogos)
+    else:
+        print(f"Erro no ano {ano}: {resposta.status_code}")
+        
+    time.sleep(2) 
+
+print(f"\n✅ Tubagem concluída! {total_jogos_guardados} jogos guardados no teu laboratório.")

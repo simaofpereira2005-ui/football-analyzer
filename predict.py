@@ -10,8 +10,8 @@ def calcular_lambda(equipa_casa, equipa_fora, dados):
     stats_casa = dados['equipas'].get(equipa_casa)
     stats_fora = dados['equipas'].get(equipa_fora)
     
-    if not stats_casa or not stats_fora:
-        return None, None # Se não tivermos dados de uma das equipas, abortamos
+    if stats_casa is None or stats_fora is None:
+        return None, None
 
     forca_ataque_casa = stats_casa['casa_marcados'] / media_liga_casa
     forca_defesa_casa = stats_casa['casa_sofridos'] / media_liga_fora
@@ -34,7 +34,6 @@ def calcular_probabilidades_jogo(lambda_casa, lambda_fora, max_golos=5):
     prob_empate = 0.0
     prob_vitoria_fora = 0.0
     
-    # Criamos a nossa grelha de combinações (de 0 a 5 golos para cada equipa)
     for golos_casa in range(max_golos + 1):
         for golos_fora in range(max_golos + 1):
             
@@ -52,6 +51,28 @@ def calcular_probabilidades_jogo(lambda_casa, lambda_fora, max_golos=5):
                 
     return prob_vitoria_casa * 100, prob_empate * 100, prob_vitoria_fora * 100
 
+def sugestao_aposta(vit_casa, empate, vit_fora, lambda_casa, lambda_fora):
+    """Gera uma sugestão de aposta baseada nas probabilidades e xG."""
+    xg_total = lambda_casa + lambda_fora
+    
+    if vit_casa > 60.0:
+        return "🔥 Vitória da Equipa da Casa (Confiança Alta)"
+    elif vit_fora > 60.0:
+        return "🔥 Vitória da Equipa de Fora (Confiança Alta)"
+    
+    elif xg_total > 2.8:
+        return "⚽ Over 2.5 (Mais de 2.5 golos no jogo)"
+    elif xg_total < 1.5:
+        return "🛡️ Under 2.5 (Menos de 2.5 golos no jogo)"
+    
+    elif vit_casa > 45.0:
+        return "⚖️ Empate Anula: Equipa da Casa (DNB)"
+    elif vit_fora > 45.0:
+        return "⚖️ Empate Anula: Equipa de Fora (DNB)"
+    
+    else:
+        return "⚠️ Jogo Imprevisível (Evitar Apostar no Vencedor)"
+    
 if __name__ == "__main__":
     dados_stats = stats.obter_estatisticas_completas()
     
