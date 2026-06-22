@@ -27,6 +27,7 @@ if resposta.status_code == 200:
     print(f"Encontrados {len(jogos)} jogos na API.")
     
     if len(jogos) > 0:
+        database.criar_base_dados() 
         database.guardar_jogos(jogos)
 else:
     print(f"Erro: {resposta.status_code}")
