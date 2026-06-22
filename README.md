@@ -28,11 +28,55 @@ Este é um projeto *Full-Stack* de Engenharia de Dados e Machine Learning (Estat
 
 ---
 
-## Como Correr o Projeto Localmente
+## 🚀 Como Correr o Projeto Localmente
 
 Se quiseres clonar e correr este laboratório no teu próprio computador, segue estes passos:
 
 **1. Clonar o Repositório**
 ```bash
-git clone https://github.com/simaofpereira2005-ui/football-analyzer.git
+git clone [https://github.com/simaofpereira2005-ui/football-analyzer.git](https://github.com/simaofpereira2005-ui/football-analyzer.git)
 cd football-analyzer
+```
+
+**2. Criar e Ativar o Ambiente Virtual**
+```bash
+python -m venv venv
+# No Windows:
+venv\Scripts\activate
+# No Mac/Linux:
+source venv/bin/activate
+```
+
+**3. Instalar as Dependências**
+```bash
+pip install -r requirements.txt
+```
+
+**4. Configurar a API Key**
+* Cria um ficheiro chamado `.env` na raiz do projeto.
+* Regista-te no site [football-data.org](https://www.football-data.org/) para obteres uma API Key gratuita.
+* Adiciona a tua chave ao ficheiro `.env` com este formato:
+```text
+API_KEY="a_tua_chave_aqui"
+```
+
+**5. Alimentar a Base de Dados**
+Corre o script de extração para ir buscar os últimos jogos do Mundial e construir a base de dados SQLite:
+```bash
+python api_test.py
+```
+
+**6. Iniciar a Aplicação Web**
+```bash
+streamlit run app.py
+```
+
+---
+
+## 🧠 Como funciona a Matemática (Distribuição de Poisson)?
+
+O modelo assume que os golos no futebol são eventos independentes que ocorrem a uma taxa média constante. 
+Primeiro, calculamos o xG (Expectativa de Golos) para um jogo específico cruzando o poder de ataque da Equipa A com o poder de defesa da Equipa B e a média geral do torneio. De seguida, o valor gerado (Lambda) é inserido na fórmula de Poisson para extrair a probabilidade de a equipa marcar 0, 1, 2, 3 ou mais golos. O cruzamento das probabilidades de ambas as equipas dá-nos a matriz final de Vitória, Empate e Derrota.
+
+---
+*Desenvolvido por Simão Pereira - Engenharia Informática @ IPL.*
