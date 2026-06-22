@@ -6,7 +6,7 @@ Este é um projeto *Full-Stack* de Engenharia de Dados e Machine Learning (Estat
 
 ---
 
-## ✨ Funcionalidades Principais
+## Funcionalidades Principais
 
 * **Extração de Dados (ETL):** Integração com a API `football-data.org` para extrair resultados atualizados do Mundial de 2026.
 * **Armazenamento Robusto:** Arquitetura de base de dados relacional usando `SQLite3` para guardar e agregar estatísticas de golos (Casa/Fora).
@@ -17,7 +17,7 @@ Este é um projeto *Full-Stack* de Engenharia de Dados e Machine Learning (Estat
 
 ---
 
-## 🛠️ Stack Tecnológica
+## Stack Tecnológica
 
 * **Linguagem:** Python 3
 * **Front-End / UI:** Streamlit
@@ -28,7 +28,7 @@ Este é um projeto *Full-Stack* de Engenharia de Dados e Machine Learning (Estat
 
 ---
 
-## 🚀 Como Correr o Projeto Localmente
+## Como Correr o Projeto Localmente
 
 Se quiseres clonar e correr este laboratório no teu próprio computador, segue estes passos:
 
